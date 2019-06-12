@@ -1,0 +1,35 @@
+select{
+  padding: 7px;
+
+  font-size: 25px;
+
+  text-align: center;
+}
+
+#pageheader{
+  margin-top: 50px;
+
+  margin-left: 0px;
+}
+
+h1{
+  margin-left: 250px;
+}
+
+p{
+  text-align: center;
+
+  font-size: 30px;
+}
+
+button{
+	position: absolute;
+
+	font-size: 30px;
+
+	margin-left: 250px;
+}
+
+#buttons{
+  margin-left: 15px;
+}

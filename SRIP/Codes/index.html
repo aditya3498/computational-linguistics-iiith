@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title> Computational Linguistics - 1 </title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content = "width=device-width, initial-scale = 1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+
+  <link rel = "stylesheet" href = "styles.css">
+
+  <script type = "text/javascript" src = "index.js"> </script>
+
+</head>
+
+<body>
+
+	<h1 id = "pageheader" align="center"> Forming Sentences - 1 </h1>
+
+	<h1> Experiment </h1>
+
+	<br>
+
+	<div class="row">
+ 	 <div class="col-md-12 school-options-dropdown text-center">
+  	  <select id = "selectedEngorHin" autocomplete="off" onchange="selectEngorHin()">  
+		<option value = "" selected > ---CHOOSE LANGUAGE--- </option>
+		<option value = "English" > English </option>
+		<option value = "Hindi"> Hindi </option> 
+		</select>
+  	 </div>
+	</div> 
+
+	<br></br>
+
+	<p id = "demo" hidden> Form a sentence (Declarative or Interrogative or any other type) from the given words </p>
+	<p id = "demo1" hidden> Task : (Select the buttons in proper order) </p>  
+	<br></br>
+	<div id="buttons"></div>
+</body>
+</html>
