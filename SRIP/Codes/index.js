@@ -10,6 +10,10 @@ function selectEngorHin()
 
 	if(x == "English")
 	{
+		r = "";
+
+		$('#chosen').html(r);
+
 		chosenWords = [], chosenSentence = [];
 		
 		document.getElementById("demo").style.display = "block";
@@ -19,9 +23,6 @@ function selectEngorHin()
 		document.getElementById("buttons").style.display = "block";
 
 		document.getElementById("chosen").style.display = "block";
-
-		document.getElementById("demo2").style.display = "block";
-
 		
 		var random = getRandomNumber();
 		
@@ -37,12 +38,17 @@ function selectEngorHin()
 		
 		for(var i = 0; i < res.length; i++) 
 		{
-			s += '<button id = "' + i + '" value = "' + res[i] + '" name = " ' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button><br></br><br></br>';
+			s += '<div class = "col-sm-2"><button id = "' + i + '" value = "' + res[i] + '" name = "' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button></div>';
 		}
 
-		//console.log(s);
+		s += '<br></br><br></br><br>';
+
+		console.log(s);
 		
 		$('#buttons').html(s);
+
+		document.getElementById("demo2").style.display = "block";
+
 	}
 
 	else if(x == "Hindi")
@@ -55,9 +61,7 @@ function selectEngorHin()
 
 		document.getElementById("chosen").style.display = "none";
 
-		document.getElementById("demo2").style.display = "block";
-
-
+		document.getElementById("demo2").style.display = "none";
 	}
 
 	else
@@ -70,9 +74,7 @@ function selectEngorHin()
 
 		document.getElementById("chosen").style.display = "none";
 
-		document.getElementById("demo2").style.display = "block";
-
-
+		document.getElementById("demo2").style.display = "none";
 	}
 };
 
@@ -101,7 +103,7 @@ function buttonselected(text)
 
 function displaychosen(word, id)
 {
-	r += '<div class = "col-sm-2"><button id = "' + id + '" value = "' + chosenWords.length + '">' + word + '</button></div>';
+	r += '<p id = "' + id + '" style = "display: inline" value = "' + chosenWords.length + '">' + word + "&nbsp;&nbsp;&nbsp;&nbsp;" + '</p>';
 
 	console.log(r);
 

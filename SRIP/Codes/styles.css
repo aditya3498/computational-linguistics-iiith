@@ -12,24 +12,26 @@ select{
   margin-left: 0px;
 }
 
+h2{
+  margin-left: 250px;
+}
+
 h1{
   margin-left: 250px;
 }
 
-p{
+p
+{
   text-align: center;
 
   font-size: 30px;
 }
 
 button{
-	position: absolute;
+
+  position: absolute;
 
 	font-size: 30px;
 
-	margin-left: 250px;
-}
-
-#buttons{
-  margin-left: 15px;
+	margin-left: 200px;
 }
