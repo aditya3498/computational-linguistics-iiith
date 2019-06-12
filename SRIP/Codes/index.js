@@ -1,6 +1,6 @@
 var Sentences = ['the apple is red', 'the car is broken', 'the cat eats the rat', 'the bank of the river', 'the bank of India', 'park the car', 'book the ticket', 'pack of cards'];
 
-var chosenSentences = [], shuffledSentences = [], chosenSentence = [], len = 0;
+var chosenWords = [], shuffledSentences = [], chosenSentence = [], index = 0, sen = [], r = "";
 
 function selectEngorHin()
 {
@@ -10,17 +10,28 @@ function selectEngorHin()
 
 	if(x == "English")
 	{
-		chosenSentences = [];
+		chosenWords = [], chosenSentence = [];
 		
 		document.getElementById("demo").style.display = "block";
 		
 		document.getElementById("demo1").style.display = "block";		
 		
 		document.getElementById("buttons").style.display = "block";
+
+		document.getElementById("chosen").style.display = "block";
+
+		document.getElementById("demo2").style.display = "block";
+
 		
 		var random = getRandomNumber();
 		
 		var res = shuffledSentences[random].split(" ");
+
+		var sen = Sentences[random];
+
+		//console.log(res);
+
+		//console.log(sen);
 		
 		s = "";
 		
@@ -28,6 +39,8 @@ function selectEngorHin()
 		{
 			s += '<button id = "' + i + '" value = "' + res[i] + '" name = " ' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button><br></br><br></br>';
 		}
+
+		//console.log(s);
 		
 		$('#buttons').html(s);
 	}
@@ -39,6 +52,12 @@ function selectEngorHin()
 		document.getElementById("demo1").style.display = "block";
 		
 		document.getElementById("buttons").style.display = "none";
+
+		document.getElementById("chosen").style.display = "none";
+
+		document.getElementById("demo2").style.display = "block";
+
+
 	}
 
 	else
@@ -48,6 +67,12 @@ function selectEngorHin()
 		document.getElementById("demo1").style.display = "none";
 		
 		document.getElementById("buttons").style.display = "none";
+
+		document.getElementById("chosen").style.display = "none";
+
+		document.getElementById("demo2").style.display = "block";
+
+
 	}
 };
 
@@ -59,16 +84,29 @@ function buttonselected(text)
 
 	var word = document.getElementById(text).value;
 
-	chosenSentences.push(word);
+	var id = document.getElementById(text).id;
 
-	if(chosenSentences.length == val)
+	chosenWords.push(word);
+
+	if(chosenWords.length == val)
 	{
-		var final = chosenSentences.join(' ');
+		var final = chosenWords.join(' ');
 
 		chosenSentence.push(final);
 	}
 
+	displaychosen(word, id);
+
 };
+
+function displaychosen(word, id)
+{
+	r += '<div class = "col-sm-2"><button id = "' + id + '" value = "' + chosenWords.length + '">' + word + '</button></div>';
+
+	console.log(r);
+
+	$('#chosen').html(r);	
+}
 
 function getRandomNumber()
 {
