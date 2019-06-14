@@ -29,16 +29,17 @@ function selectEngorHin()
 		var res = shuffledSentences[random].split(" ");
 
 		var sen = Sentences[random];
-
-		//console.log(res);
-
-		//console.log(sen);
 		
 		s = "";
 		
 		for(var i = 0; i < res.length; i++) 
 		{
-			s += '<div class = "col-sm-2"><button id = "' + i + '" value = "' + res[i] + '" name = "' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button></div>';
+			s += '<button class = "button" id = "' + i + '" value = "' + res[i] + '" name = "' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button>';
+
+			for(var j = 0; j < 40; j++)
+			{
+				s += '&nbsp;';
+			}
 		}
 
 		s += '<br></br><br></br><br>';
@@ -46,9 +47,6 @@ function selectEngorHin()
 		console.log(s);
 		
 		$('#buttons').html(s);
-
-		document.getElementById("demo2").style.display = "block";
-
 	}
 
 	else if(x == "Hindi")
@@ -62,6 +60,12 @@ function selectEngorHin()
 		document.getElementById("chosen").style.display = "none";
 
 		document.getElementById("demo2").style.display = "none";
+
+		document.getElementById("demo3").style.display = "none";
+
+		document.getElementById("re-form").style.display = "none";
+
+
 	}
 
 	else
@@ -75,12 +79,19 @@ function selectEngorHin()
 		document.getElementById("chosen").style.display = "none";
 
 		document.getElementById("demo2").style.display = "none";
+
+		document.getElementById("demo3").style.display = "none";
+
+		document.getElementById("re-form").style.display = "none";
+
 	}
 };
 
 function buttonselected(text)
 {
 	$('#' + text).hide();
+
+	//document.getElementById(text).style.display = "none";
 
 	var val = document.getElementById(text).name;
 
@@ -94,15 +105,24 @@ function buttonselected(text)
 	{
 		var final = chosenWords.join(' ');
 
-		chosenSentence.push(final);
+		chosenSentence.push(final);	
+
+		document.getElementById("buttons").style.display = "none";
 	}
 
 	displaychosen(word, id);
 
+	//window.scrollBy(0,-100);
 };
 
 function displaychosen(word, id)
 {
+	document.getElementById("demo2").style.display = "block";
+
+	document.getElementById("demo3").style.display = "block";
+
+	document.getElementById("re-form").style.display = "block";
+
 	r += '<p id = "' + id + '" style = "display: inline" value = "' + chosenWords.length + '">' + word + "&nbsp;&nbsp;&nbsp;&nbsp;" + '</p>';
 
 	console.log(r);

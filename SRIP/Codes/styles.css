@@ -1,5 +1,5 @@
 select{
-  padding: 7px;
+  padding: 5px;
 
   font-size: 25px;
 
@@ -12,6 +12,10 @@ select{
   margin-left: 0px;
 }
 
+.wrapper{
+  text-align: center;
+}
+
 h2{
   margin-left: 250px;
 }
@@ -20,18 +24,30 @@ h1{
   margin-left: 250px;
 }
 
+#demo, #demo1, #demo2, #demo3
+{
+  text-align: center;
+
+  font-size: 25px;
+}
+
 p
 {
   text-align: center;
 
-  font-size: 30px;
+  font-size: 40px;
 }
 
-button{
+.button{
 
-  position: absolute;
+  font-size: 28px;
+}
 
-	font-size: 30px;
+#reform
+{
+  margin: auto;
 
-	margin-left: 200px;
+  display: block;
+
+  font-size: 30px;
 }
