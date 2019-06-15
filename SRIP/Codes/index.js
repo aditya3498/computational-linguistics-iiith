@@ -1,6 +1,6 @@
 var Sentences = ['the apple is red', 'the car is broken', 'the cat eats the rat', 'the bank of the river', 'the bank of India', 'park the car', 'book the ticket', 'pack of cards'];
 
-var chosenWords = [], shuffledSentences = [], chosenSentence = [], index = 0, sen = [], r = "";
+var chosenWords = [], shuffledSentences = [], chosenSentence = [], index_id = [], sen = [], r = "", id1, word, q = 0;
 
 function selectEngorHin()
 {
@@ -28,21 +28,19 @@ function selectEngorHin()
 		
 		var res = shuffledSentences[random].split(" ");
 
-		var sen = Sentences[random];
+		sen = Sentences[random];
 		
 		s = "";
 		
 		for(var i = 0; i < res.length; i++) 
 		{
-			s += '<button class = "button" id = "' + i + '" value = "' + res[i] + '" name = "' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button>';
+			s += '<button class = "button" id = "' + i  + '" value = "' + res[i] + '" name = "' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button>';
 
 			for(var j = 0; j < 40; j++)
 			{
 				s += '&nbsp;';
 			}
 		}
-
-		s += '<br></br><br></br><br>';
 
 		console.log(s);
 		
@@ -91,13 +89,15 @@ function buttonselected(text)
 {
 	$('#' + text).hide();
 
-	//document.getElementById(text).style.display = "none";
-
 	var val = document.getElementById(text).name;
 
-	var word = document.getElementById(text).value;
+	word = document.getElementById(text).value;
 
-	var id = document.getElementById(text).id;
+	id1 = document.getElementById(text).id;
+
+	index_id.push(id1);	
+
+	console.log(index_id);
 
 	chosenWords.push(word);
 
@@ -106,13 +106,9 @@ function buttonselected(text)
 		var final = chosenWords.join(' ');
 
 		chosenSentence.push(final);	
-
-		document.getElementById("buttons").style.display = "none";
 	}
 
-	displaychosen(word, id);
-
-	//window.scrollBy(0,-100);
+	displaychosen(word, id1);
 };
 
 function displaychosen(word, id)
@@ -169,3 +165,25 @@ function shufflesentences()
 
 	return shuffledSentences;
 };
+
+function reformsentence()
+{
+	var x = chosenWords.length;
+
+	for(var i = 0; i < x; i++)
+	{
+		$('#' + index_id[i]).show();
+
+		console.log(index_id[i]);
+	}
+
+	r = "";
+
+	$('#chosen').html(r);
+
+	chosenWords = [];
+
+	q++;
+
+	index_id = [];
+}
