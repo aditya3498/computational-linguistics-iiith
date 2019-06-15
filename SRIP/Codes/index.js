@@ -1,6 +1,6 @@
 var Sentences = ['the apple is red', 'the car is broken', 'the cat eats the rat', 'the bank of the river', 'the bank of India', 'park the car', 'book the ticket', 'pack of cards'];
 
-var chosenWords = [], shuffledSentences = [], chosenSentence = [], index_id = [], sen = [], r = "", id1, word, q = 0;
+var chosenWords = [], shuffledSentences = [], chosenSentence = [], index_id = [], sen = [], r = "", id1, word, q = 0, val;
 
 function selectEngorHin()
 {
@@ -43,6 +43,8 @@ function selectEngorHin()
 		}
 
 		console.log(s);
+
+		console.log(sen);
 		
 		$('#buttons').html(s);
 	}
@@ -89,7 +91,7 @@ function buttonselected(text)
 {
 	$('#' + text).hide();
 
-	var val = document.getElementById(text).name;
+	val = document.getElementById(text).name;
 
 	word = document.getElementById(text).value;
 
@@ -106,6 +108,10 @@ function buttonselected(text)
 		var final = chosenWords.join(' ');
 
 		chosenSentence.push(final);	
+
+		document.getElementById("check-correct").style.display = "block";
+
+		console.log(chosenSentence);
 	}
 
 	displaychosen(word, id1);
@@ -168,6 +174,12 @@ function shufflesentences()
 
 function reformsentence()
 {
+	document.getElementById("re-form").style.display = "block";
+
+	document.getElementById("demo2").style.display = "block";
+
+	document.getElementById("demo3").style.display = "block";
+
 	var x = chosenWords.length;
 
 	for(var i = 0; i < x; i++)
@@ -183,7 +195,42 @@ function reformsentence()
 
 	chosenWords = [];
 
+	if(x == val)
+	{
+		chosenSentence = [];
+	}
+
 	q++;
 
 	index_id = [];
+
+	document.getElementById("re-form").style.display = "none";
+
+	document.getElementById("demo2").style.display = "none";
+
+	document.getElementById("demo3").style.display = "none";
+
+	document.getElementById("check-correct").style.display = "none";
+
+	document.getElementById("right").style.display = "none";
+
+	document.getElementById("wrong").style.display = "none";
+}
+
+function checkcorrect()
+{
+	for(var i = 0; i < chosenSentence.length; i++)
+	{
+		if(chosenSentence[i] == sen)
+		{
+			$('#right').show();
+		}
+
+		else
+		{
+			$('#wrong').show();
+		}
+	}
+
+	chosenSentence = [];
 }
