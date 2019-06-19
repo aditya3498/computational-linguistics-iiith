@@ -1,12 +1,17 @@
 var Sentences = ['the apple is red', 'the car is broken', 'the cat eats the rat', 'the bank of the river', 'the bank of India', 'park the car', 'book the ticket', 'pack of cards'];
 
-var chosenWords = [], shuffledSentences = [], chosenSentence = [], index_id = [], sen = [], r = "", id1, word, q = 0, val;
+var chosenWords = [], shuffledSentences = [], chosenSentence = [], index_id = [], sen = [], r = "", id1, word, val, truth = true, value = true;
 
 function selectEngorHin()
 {
 	var x = document.getElementById("selectedEngorHin").value;
 
-	shufflesentences();
+	if(truth == true)
+	{
+		shufflesentences();
+
+		truth = false;
+	}
 
 	if(x == "English")
 	{
@@ -44,6 +49,10 @@ function selectEngorHin()
 
 		console.log(s);
 
+		console.log(shuffledSentences.length);
+
+		console.log(random);
+
 		console.log(sen);
 		
 		$('#buttons').html(s);
@@ -59,17 +68,24 @@ function selectEngorHin()
 
 		document.getElementById("chosen").style.display = "none";
 
-		document.getElementById("demo2").style.display = "none";
-
 		document.getElementById("demo3").style.display = "none";
 
 		document.getElementById("re-form").style.display = "none";
 
+		document.getElementById("check-correct").style.display = "none";
+
+		document.getElementById("right").style.display = "none";
+
+		document.getElementById("wrong").style.display = "none";
+
+		document.getElementById("rightsentence").style.display = "none";
 
 	}
 
 	else
 	{
+		alert("Choose Language");
+
 		document.getElementById("demo").style.display = "none";
 		
 		document.getElementById("demo1").style.display = "none";
@@ -78,11 +94,17 @@ function selectEngorHin()
 
 		document.getElementById("chosen").style.display = "none";
 
-		document.getElementById("demo2").style.display = "none";
-
 		document.getElementById("demo3").style.display = "none";
 
 		document.getElementById("re-form").style.display = "none";
+
+		document.getElementById("check-correct").style.display = "none";
+
+		document.getElementById("right").style.display = "none";
+
+		document.getElementById("wrong").style.display = "none";
+
+		document.getElementById("rightsentence").style.display = "none";
 
 	}
 };
@@ -109,7 +131,7 @@ function buttonselected(text)
 
 		chosenSentence.push(final);	
 
-		document.getElementById("check-correct").style.display = "block";
+		document.getElementById("check-correct").style.display = "block";	
 
 		console.log(chosenSentence);
 	}
@@ -119,8 +141,6 @@ function buttonselected(text)
 
 function displaychosen(word, id)
 {
-	document.getElementById("demo2").style.display = "block";
-
 	document.getElementById("demo3").style.display = "block";
 
 	document.getElementById("re-form").style.display = "block";
@@ -151,9 +171,13 @@ Array.prototype.shuffled = function()
     while (--i) 
     {
         var j = Math.floor(Math.random() * (i + 1));
+        
         var a = this[i];
+        
         var b = this[j];
+        
         this[i] = b;
+        
         this[j] = a;
     }
 
@@ -175,8 +199,6 @@ function shufflesentences()
 function reformsentence()
 {
 	document.getElementById("re-form").style.display = "block";
-
-	document.getElementById("demo2").style.display = "block";
 
 	document.getElementById("demo3").style.display = "block";
 
@@ -200,13 +222,9 @@ function reformsentence()
 		chosenSentence = [];
 	}
 
-	q++;
-
 	index_id = [];
 
 	document.getElementById("re-form").style.display = "none";
-
-	document.getElementById("demo2").style.display = "none";
 
 	document.getElementById("demo3").style.display = "none";
 
@@ -215,10 +233,18 @@ function reformsentence()
 	document.getElementById("right").style.display = "none";
 
 	document.getElementById("wrong").style.display = "none";
+
+	document.getElementById("gettingcorrectans").style.display = "none";
+
+	document.getElementById("rightsentence").style.display = "none";
+
+	$(".button1").text("Get Correct Sentence");
 }
 
 function checkcorrect()
 {
+	$('#rightsentence').html(sen);
+
 	for(var i = 0; i < chosenSentence.length; i++)
 	{
 		if(chosenSentence[i] == sen)
@@ -229,6 +255,8 @@ function checkcorrect()
 		else
 		{
 			$('#wrong').show();
+
+			$('#gettingcorrectans').show();
 		}
 	}
 
