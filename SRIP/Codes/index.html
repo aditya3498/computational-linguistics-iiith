@@ -19,7 +19,7 @@
   <link rel = "stylesheet" href = "styles.css">
 
   <script type = "text/javascript" src = "index.js"> </script>
-
+  
 </head>
 
 <body>
@@ -46,7 +46,6 @@
 	<p id = "demo1" hidden><i> Task : (Select the buttons in proper order) </i></p>  
 	<br></br>
 	<div class = "wrapper" id="buttons"></div><br><br>
-	<!--<p id = "demo2" hidden>***********************************************************************************************************************</p><br>-->
 	<p id = "demo3" hidden><b> Formed Sentence <i> (after selecting words): </i> </b></p>
 	<p id="chosen" hidden></p><br>
 	<div class = "wrapper" id="re-form" hidden><button class = "button" id="reform" onclick="reformsentence()">Re-form the Sentence</button></div><br></br>
@@ -59,7 +58,7 @@
 		{
 			var label = $(".button1").text().trim();
 
-			if(label == "Get Correct Sentence")
+			if(label == "Get Correct Sentence" && x == "English")
 			{
 				$(".button1").text("Hide The Correct Sentence");
     		
@@ -69,12 +68,29 @@
 
 			}
 
-			else 
+			else if(label != "Get Correct Sentence" && x == "English")
 			{
    				$(".button1").text("Get Correct Sentence");
 
   				$('#rightsentence').hide();
 			}	
+
+			if(label == "Get Correct Sentence" && x == "Hindi")
+			{
+				$(".button1").text("Hide The Correct Sentence");
+    		
+   				$('#rightsentence').html(hin_sen);
+
+				$('#rightsentence').show();
+
+			}
+
+			else if(label != "Get Correct Sentence" && x == "Hindi")
+			{
+   				$(".button1").text("Get Correct Sentence");
+
+  				$('#rightsentence').hide();
+			}
 		});
 	</script>
 	<p id = "rightsentence" hidden><strong></strong></p>

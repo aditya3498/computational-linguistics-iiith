@@ -1,0 +1,53 @@
+{
+	"English": [
+		{
+			"id" : "1",
+
+			"sentence" : "the apple is red",
+		},
+
+		{
+			"id" : "2",
+
+			"sentence" : "the car is broken", 
+		}
+
+		{
+			"id" : "3",
+
+			"sentence" : "the cat eats the rat",
+		},
+
+		{
+			"id" : "4",
+
+			"sentence" : "the bank of the river",
+		},
+
+		{
+			"id" : "5",
+
+			"sentence" : "the bank of India",
+		},
+
+		{
+			"id" : "6",
+
+			"sentence" : "park the car",
+		},
+
+		{
+			"id" : "7",
+
+			"sentence" : "book the ticket",
+		},
+
+
+		{
+			"id" : "8",
+
+			"sentence" : "pack of cards",
+		},
+
+	]
+}
