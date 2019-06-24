@@ -19,6 +19,20 @@ function selectEngorHin()
 
 	if(x == "English")
 	{
+		document.getElementById("right").style.display = "none";
+
+		document.getElementById("wrong").style.display = "none";
+
+		document.getElementById("rightsentence").style.display = "none";
+
+		document.getElementById("check-correct").style.display = "none";
+
+		document.getElementById("demo3").style.display = "none";
+
+		document.getElementById("re-form").style.display = "none";
+
+		document.getElementById("gettingcorrectans").style.display = "none";
+
 		r = "";
 
 		$('#chosen').html(r);
@@ -64,6 +78,20 @@ function selectEngorHin()
 
 	else if(x == "Hindi")
 	{
+		document.getElementById("right").style.display = "none";
+
+		document.getElementById("wrong").style.display = "none";
+
+		document.getElementById("rightsentence").style.display = "none";
+
+		document.getElementById("check-correct").style.display = "none";
+
+		document.getElementById("demo3").style.display = "none";
+
+		document.getElementById("re-form").style.display = "none";
+
+		document.getElementById("gettingcorrectans").style.display = "none";
+		
 		r = "";
 
 		$('#chosen').html(r);
