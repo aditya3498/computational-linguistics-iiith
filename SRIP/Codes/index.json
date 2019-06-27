@@ -1,0 +1,37 @@
+{
+	"English": 
+	[
+		{
+			"Sentence": ["the apple is red", "is the apple red"]
+		},
+
+		{
+			"Sentence": ["the car is broken", "is the car broken"]
+		},
+
+		{
+			"Sentence": "the cat eats the rat"
+		},
+
+		{
+			"Sentence": "the bank of the river"
+		},
+
+		{
+			"Sentence": "the bank of India"
+		},
+
+		{
+			"Sentence": "park the car"
+		},
+
+		{
+			"Sentence": "book the ticket"
+		},
+
+		{
+			"Sentence": "pack of cards"
+		}
+		
+	]		
+}

@@ -1,8 +1,42 @@
-var English_Sentences = ['the apple is red', 'the car is broken', 'the cat eats the rat', 'the bank of the river', 'the bank of India', 'park the car', 'book the ticket', 'pack of cards'];
+var x, chosenWords = [], index_sentences = [], index_sentences_hindi = [], Hindi_Sentences = [], shuffledEnglishSentences = [], shuffledHindiSentences = [], English_Sentences = [], index, index_hindi, flag = 0, flag_hindi = 0, chosenSentence = [], index_id = [], sen = [], hin_sen = [], r = "", id_1, word, val, random_hindi, truth = true, random;
 
-var Hindi_Sentences = ['मुझे आपकी बहुत याद आयी', 'क्या आप मेरी मदद कर सकते हैं']
+$.getJSON('index.json', function(data)
+{
+	for(var i = 0; i < data['English'].length; i++)
+	{
+		if(Array.isArray(data['English'][i]['Sentence']))
+		{
+			index_sentences.push(data['English'][i]['Sentence']);
+			
+			English_Sentences.push(data['English'][i]['Sentence'][0]);
+		}
 
-var x, chosenWords = [], shuffledEnglishSentences = [], shuffledHindiSentences = [], chosenSentence = [], index_id = [], sen = [], hin_sen = [], r = "", id_1, word, val, random1, truth = true, random;
+		else
+		{
+			English_Sentences.push(data['English'][i]['Sentence']);
+		}
+	}
+});
+
+$.getJSON('index_hindi.json', function(data)
+{
+	for(var i = 0; i < data['Hindi'].length; i++)
+	{
+		if(Array.isArray(data['Hindi'][i]['Sentence']))
+		{
+			index_sentences_hindi.push(data['Hindi'][i]['Sentence']);
+			
+			Hindi_Sentences.push(data['Hindi'][i]['Sentence'][0]);
+
+			console.log(index_sentences_hindi)
+		}
+
+		else
+		{
+			Hindi_Sentences.push(data['Hindi'][i]['Sentence']);
+		}
+	}
+});
 
 function selectEngorHin()
 {
@@ -19,6 +53,8 @@ function selectEngorHin()
 
 	if(x == "English")
 	{
+		$(".button1").text("Get Correct Sentence");
+
 		document.getElementById("right").style.display = "none";
 
 		document.getElementById("wrong").style.display = "none";
@@ -52,6 +88,14 @@ function selectEngorHin()
 		var res = shuffledEnglishSentences[random].split(" ");
 
 		sen = English_Sentences[random];
+
+		for(var i = 0; i < index_sentences.length; i++)
+		{
+			if(sen == index_sentences[i][0])
+			{
+				index = i;
+			}
+		}
 		
 		s = "";
 		
@@ -65,19 +109,13 @@ function selectEngorHin()
 			}
 		}
 
-		console.log(s);
-
-		console.log(shuffledEnglishSentences.length);
-
-		console.log(random);
-
-		console.log(sen);
-		
 		$('#buttons').html(s);
 	}
 
 	else if(x == "Hindi")
 	{
+		$(".button1").text("Get Correct Sentence");
+
 		document.getElementById("right").style.display = "none";
 
 		document.getElementById("wrong").style.display = "none";
@@ -106,11 +144,21 @@ function selectEngorHin()
 
 		document.getElementById("chosen").style.display = "block";
 		
-		random1 = getRandomHindi();
+		random_hindi = getRandomHindi();
 		
-		var res = shuffledHindiSentences[random1].split(" ");
+		var res = shuffledHindiSentences[random_hindi].split(" ");
 
-		hin_sen = Hindi_Sentences[random1];
+		hin_sen = Hindi_Sentences[random_hindi];
+
+		for(var i = 0; i < index_sentences_hindi.length; i++)
+		{
+			if(hin_sen == index_sentences_hindi[i][0])
+			{
+				index_hindi = i;
+
+				console.log(index_hindi)
+			}
+		}
 		
 		s = "";
 		
@@ -124,14 +172,6 @@ function selectEngorHin()
 			}
 		}
 
-		console.log(s);
-
-		console.log(shuffledHindiSentences.length);
-
-		console.log(random1);
-
-		console.log(hin_sen);
-		
 		$('#buttons').html(s);
 	}
 
@@ -174,8 +214,6 @@ function buttonselected(text)
 
 	index_id.push(id_1);	
 
-	console.log(index_id);
-
 	chosenWords.push(word);
 
 	if(chosenWords.length == val)
@@ -185,8 +223,6 @@ function buttonselected(text)
 		chosenSentence.push(final);	
 
 		document.getElementById("check-correct").style.display = "block";	
-
-		console.log(chosenSentence);
 	}
 
 	displaychosen(word, id_1);
@@ -199,8 +235,6 @@ function displaychosen(word, id)
 	document.getElementById("re-form").style.display = "block";
 
 	r += '<p id = "' + id + '" style = "display: inline" value = "' + chosenWords.length + '">' + word + "&nbsp;&nbsp;&nbsp;&nbsp;" + '</p>';
-
-	console.log(r);
 
 	$('#chosen').html(r);	
 }
@@ -279,8 +313,6 @@ function reformsentence()
 	for(var i = 0; i < x; i++)
 	{
 		$('#' + index_id[i]).show();
-
-		console.log(index_id[i]);
 	}
 
 	r = "";
@@ -317,43 +349,33 @@ function checkcorrect()
 {
 	if(x == "English")
 	{
-		$('#rightsentence').html(sen);
+		flag = 0;
 
-		for(var i = 0; i < chosenSentence.length; i++)
+		if(index == random)
 		{
-			if(random == 0)
+			for(var i = 0; i < index_sentences.length; i++)
 			{
-				if(chosenSentence[i] == sen || chosenSentence[i] == "is the apple red")
+				if(chosenSentence[0] == index_sentences[index][i])
 				{
 					$('#right').show();
-				}
 
-				else
-				{
-					$('#wrong').show();
-
-					$('#gettingcorrectans').show();
+					flag = 1;
 				}
 			}
 
-			else if(random == 1)
+			if(flag == 0)
 			{
-				if(chosenSentence[i] == sen || chosenSentence[i] == "is the car broken")
-				{
-					$('#right').show();
-				}
+				$('#wrong').show();
 
-				else
-				{
-					$('#wrong').show();
+				$('#gettingcorrectans').show();
+			}	
 
-					$('#gettingcorrectans').show();
-				}
-			}
+		}
 
-			else
+		else
+		{
+			for(var i = 0; i < chosenSentence.length; i++)
 			{
-
 				if(chosenSentence[i] == sen)
 				{
 					$('#right').show();
@@ -371,47 +393,34 @@ function checkcorrect()
 
 	else
 	{
-		$('#rightsentence').html(hin_sen);
+		flag_hindi = 0;
 
-		for(var i = 0; i < chosenSentence.length; i++)
+		if(index_hindi == random_hindi)
 		{
-			console.log(chosenSentence[i]);
-
-			if(random1 == 0)
+			for(var i = 0; i < index_sentences_hindi.length; i++)
 			{
-				if(chosenSentence[i] == hin_sen || chosenSentence[i] == "आपकी बहुत याद आयी मुझे" ||  chosenSentence[i] == "आपकी मुझे बहुत याद आयी")
+				if(chosenSentence[0] == index_sentences_hindi[index_hindi][i])
 				{
 					$('#right').show();
-				}
 
-				else
-				{
-					$('#wrong').show();
-
-					$('#gettingcorrectans').show();
+					flag_hindi = 1;
 				}
 			}
 
-			else if(random1 == 1)
+			if(flag_hindi == 0)
 			{
-				if(chosenSentence[i] == hin_sen || chosenSentence[i] == "आप मेरी मदद कर सकते हैं क्या" || chosenSentence[i] == "मेरी मदद क्या आप कर सकते हैं"
-					|| chosenSentence[i] == "मेरी मदद कर सकते हैं क्या आप")
-				{
-					$('#right').show();
-				}
+				$('#wrong').show();
 
-				else
-				{
-					$('#wrong').show();
+				$('#gettingcorrectans').show();
+			}	
 
-					$('#gettingcorrectans').show();
-				}
-			}
+		}
 
-			else
+		else
+		{
+			for(var i = 0; i < chosenSentence.length; i++)
 			{
-
-				if(chosenSentence[i] == sen)
+				if(chosenSentence[i] == hin_sen)
 				{
 					$('#right').show();
 				}

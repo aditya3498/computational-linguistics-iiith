@@ -43,28 +43,55 @@
 	<br></br>
 
 	<p id = "demo" hidden><b> Form a sentence (Declarative or Interrogative or any other type) from the given words </b></p>
+	
 	<p id = "demo1" hidden><i> Task : (Select the buttons in proper order) </i></p>  
+	
 	<br></br>
+	
 	<div class = "wrapper" id="buttons"></div><br><br>
+	
 	<p id = "demo3" hidden><b> Formed Sentence <i> (after selecting words): </i> </b></p>
+	
 	<p id="chosen" hidden></p><br>
+	
 	<div class = "wrapper" id="re-form" hidden><button class = "button" id="reform" onclick="reformsentence()">Re-form the Sentence</button></div><br></br>
+	
 	<div class = "wrapper" id = "check-correct" hidden><button class="button" id="checkcorrect" onclick="checkcorrect()"> Check the Correctness of this sentence </button></div><br>
+	
 	<p id = "right" hidden><strong>RIGHT ANSWER !!!</strong></p>
+	
 	<p id = "wrong" hidden><strong>WRONG ANSWER !!!</strong></p>
+	
 	<div class = "wrapper" id = "gettingcorrectans" hidden><button class="button1" id="getcorrect">Get Correct Sentence</button></div>
+	
 	<script>
+		
 		$(".button1").click(function()
 		{
 			var label = $(".button1").text().trim();
 
 			if(label == "Get Correct Sentence" && x == "English")
 			{
-				$(".button1").text("Hide The Correct Sentence");
-    		
-   				$('#rightsentence').html(sen);
+				document.getElementById('rightsentence').innerHTML = " ";
 
-				$('#rightsentence').show();
+				$(".button1").text("Hide The Correct Sentence");
+
+				if(index == random)
+				{
+					for(var i = 0; i < index_sentences[index].length; i++)
+					{
+						document.getElementById('rightsentence').innerHTML += index_sentences[index][i] + '<br>'
+					}
+
+					$('#rightsentence').show();
+				}
+
+				else
+				{
+					$('#rightsentence').html(sen);
+
+					$('#rightsentence').show();
+				}
 
 			}
 
@@ -77,11 +104,26 @@
 
 			if(label == "Get Correct Sentence" && x == "Hindi")
 			{
-				$(".button1").text("Hide The Correct Sentence");
-    		
-   				$('#rightsentence').html(hin_sen);
+				document.getElementById('rightsentence').innerHTML = " ";
 
-				$('#rightsentence').show();
+				$(".button1").text("Hide The Correct Sentence");
+
+				if(index_hindi == random_hindi)
+				{
+					for(var i = 0; i < index_sentences_hindi[index_hindi].length; i++)
+					{
+						document.getElementById('rightsentence').innerHTML += index_sentences_hindi[index_hindi][i] + '<br>'
+					}
+
+					$('#rightsentence').show();
+				}
+
+				else
+				{
+					$('#rightsentence').html(hin_sen);
+
+					$('#rightsentence').show();
+				}
 
 			}
 
@@ -92,7 +134,11 @@
   				$('#rightsentence').hide();
 			}
 		});
+
 	</script>
+
 	<p id = "rightsentence" hidden><strong></strong></p>
+
 </body>
+
 </html>
