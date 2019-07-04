@@ -413,7 +413,7 @@ function checkcorrect()
 					}
 				}
 
-				return flag_hindi;
+				//return flag_hindi;
 			}
 
 			var condition2 = function ()
@@ -426,7 +426,7 @@ function checkcorrect()
 				}
 			}
 			
-			$.when(test).then(test1);
+			$.when(condition1).then(condition2);
 
 		}
 
