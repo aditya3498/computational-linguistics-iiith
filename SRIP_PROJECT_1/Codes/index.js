@@ -159,6 +159,8 @@ function selectEngorHin()
 				console.log(index_hindi)
 			}
 		}
+
+		//console.log(random_hindi)
 		
 		s = "";
 		
@@ -397,6 +399,7 @@ function checkcorrect()
 
 		if(index_hindi == random_hindi)
 		{
+			//console.log("IT si ")
 			var condition1 = function () 
 			{
 				for(var i = 0; i < index_sentences_hindi.length; i++)
@@ -412,8 +415,6 @@ function checkcorrect()
 						break;
 					}
 				}
-
-				//return flag_hindi;
 			}
 
 			var condition2 = function ()
@@ -426,11 +427,11 @@ function checkcorrect()
 				}
 			}
 			
-			$.when(condition1).then(condition2);
+			$.when(condition1()).then(condition2());
 
 		}
 
-		else
+		/*else
 		{
 			for(var i = 0; i < chosenSentence.length; i++)
 			{
@@ -446,7 +447,7 @@ function checkcorrect()
 					$('#gettingcorrectans').show();
 				}
 			}
-		}
+		}*/
 	}
 
 	chosenSentence = [];
