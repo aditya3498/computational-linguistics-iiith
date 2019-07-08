@@ -1,4 +1,4 @@
-var x, chosenWords = [], index_sentences = [], index_sentences_hindi = [], Hindi_Sentences = [], shuffledEnglishSentences = [], shuffledHindiSentences = [], English_Sentences = [], index, index_hindi, flag = 0, flag_hindi = 0, chosenSentence = [], index_id = [], sen = [], hin_sen = [], r = "", id_1, word, val, random_hindi, truth = true, random;
+var x, chosenWords = [], index_sentences = [], index_sentences_hindi = [], Hindi_Sentences = [], shuffledEnglishSentences = [], shuffledHindiSentences = [], count = 0, count_hindi = 0, English_Sentences = [], index, index_hindi, flag = 0, flag_hindi = 0, chosenSentence = [], index_id = [], sen = [], hin_sen = [], r = "", id_1, word, val, random_hindi, truth = true, random;
 
 $.getJSON("index.json", function(data)
 {
@@ -27,8 +27,6 @@ $.getJSON("index_hindi.json", function(data)
 			index_sentences_hindi.push(data['Hindi'][i]['Sentence']);
 			
 			Hindi_Sentences.push(data['Hindi'][i]['Sentence'][0]);
-
-			//	console.log(index_sentences_hindi)
 		}
 
 		else
@@ -155,13 +153,9 @@ function selectEngorHin()
 			if(hin_sen == index_sentences_hindi[i][0])
 			{
 				index_hindi = i;
-
-				console.log(index_hindi)
 			}
 		}
 
-		//console.log(random_hindi)
-		
 		s = "";
 		
 		for(var i = 0; i < res.length; i++) 
@@ -355,18 +349,31 @@ function checkcorrect()
 
 		if(index == random)
 		{
-			for(var i = 0; i < index_sentences.length; i++)
+			if(chosenSentence.length == 0 && count == 1)
+			{
+				$('#right').show();
+
+				flag = 1;
+			}
+
+			for(var i = 0; i < index_sentences[index].length; i++)
 			{
 				if(chosenSentence[0] == index_sentences[index][i])
 				{
 					$('#right').show();
 
 					flag = 1;
+
+					count = 1;
+
+					break;
 				}
 			}
 
 			if(flag == 0)
 			{
+				count = 0;
+
 				$('#wrong').show();
 
 				$('#gettingcorrectans').show();
@@ -399,39 +406,40 @@ function checkcorrect()
 
 		if(index_hindi == random_hindi)
 		{
-			//console.log("IT si ")
-			var condition1 = function () 
+			if(chosenSentence.length == 0 && count_hindi == 1)
 			{
-				for(var i = 0; i < index_sentences_hindi.length; i++)
+				$('#right').show();
+
+				flag_hindi = 1;
+			}
+
+			else
+			{
+
+				for(var i = 0; i < index_sentences_hindi[index_hindi].length; i++)
 				{
 					if(chosenSentence[0] == index_sentences_hindi[index_hindi][i])
-					{	
+					{
 						$('#right').show();
 
 						flag_hindi = 1;
-	
-						console.log(flag_hindi);
+
+						count_hindi = 1;
 
 						break;
 					}
 				}
-			}
 
-			var condition2 = function ()
-			{
-				if(flag_hindi === 0)
-				{	
+				if(flag_hindi == 0)
+				{
 					$('#wrong').show();
 
 					$('#gettingcorrectans').show();
 				}
 			}
-			
-			$.when(condition1()).then(condition2());
-
 		}
 
-		/*else
+		else
 		{
 			for(var i = 0; i < chosenSentence.length; i++)
 			{
@@ -447,7 +455,7 @@ function checkcorrect()
 					$('#gettingcorrectans').show();
 				}
 			}
-		}*/
+		}
 	}
 
 	chosenSentence = [];
