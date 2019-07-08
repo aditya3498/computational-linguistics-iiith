@@ -1,40 +1,54 @@
-var x, chosenWords = [], indexSentences = [], indexSentencesHindi = [], HindiSentences = [], shuffledEnglishSentences = [], shuffledHindiSentences = [], count = 0, countHindi = 0, EnglishSentences = [], index, indexHindi, flag = 0, flagHindi = 0, chosenSentence = [], indexId = [], sen = [], hinSen = [], r = "", id1, word, val, randomhindi, truth = true, random;
+var i, j, s = "", x, res, chosenWords = [], indexSentences = [], indexSentencesHindi = [], HindiSentences = [], shuffledEnglishSentences = [], shuffledHindiSentences = [], count = 0, countHindi = 0, EnglishSentences = [], index, indexHindi, flag = 0, flagHindi = 0, chosenSentence = [], indexId = [], sen = [], hinSen = [], r = "", id1, word, val, randomHindi, truth = true, random;
 
 $.getJSON("index.json", function(data)
 {
-	for(var i = 0; i < data['English'].length; i++)
+	for(i = 0; i < data["English"].length; i++)
 	{
-		if(Array.isArray(data['English'][i]['Sentence']))
+		if(Array.isArray(data["English"][i]["Sentence"]))
 		{
-			indexSentences.push(data['English'][i]['Sentence']);
+			indexSentences.push(data["English"][i]["Sentence"]);
 			
-			EnglishSentences.push(data['English'][i]['Sentence'][0]);
+			EnglishSentences.push(data["English"][i]["Sentence"][0]);
 		}
 
 		else
 		{
-			EnglishSentences.push(data['English'][i]['Sentence']);
+			EnglishSentences.push(data["English"][i]["Sentence"]);
 		}
 	}
 });
 
 $.getJSON("index_hindi.json", function(data)
 {
-	for(var i = 0; i < data['Hindi'].length; i++)
+	for(i = 0; i < data["Hindi"].length; i++)
 	{
-		if(Array.isArray(data['Hindi'][i]['Sentence']))
+		if(Array.isArray(data["Hindi"][i]["Sentence"]))
 		{
-			indexSentencesHindi.push(data['Hindi'][i]['Sentence']);
+			indexSentencesHindi.push(data["Hindi"][i]["Sentence"]);
 			
-			HindiSentences.push(data['Hindi'][i]['Sentence'][0]);
+			HindiSentences.push(data["Hindi"][i]["Sentence"][0]);
 		}
 
 		else
 		{
-			HindiSentences.push(data['Hindi'][i]['Sentence']);
+			HindiSentences.push(data["Hindi"][i]["Sentence"]);
 		}
 	}
 });
+
+function getRandomNumber()
+{
+	var random = Math.floor(Math.random() * shuffledEnglishSentences.length);
+
+	return random;
+};
+
+function getRandomHindi()
+{
+	var random = Math.floor(Math.random() * shuffledHindiSentences.length);
+
+	return random;
+}
 
 function selectEngorHin()
 {
@@ -83,13 +97,13 @@ function selectEngorHin()
 		
 		random = getRandomNumber();
 		
-		var res = shuffledEnglishSentences[random].split(" ");
+		res = shuffledEnglishSentences[random].split(" ");
 
 		sen = EnglishSentences[random];
 
-		for(var i = 0; i < indexSentences.length; i++)
+		for(i = 0; i < indexSentences.length; i++)
 		{
-			if(sen == indexSentences[i][0])
+			if(sen === indexSentences[i][0])
 			{
 				index = i;
 			}
@@ -97,11 +111,11 @@ function selectEngorHin()
 		
 		s = "";
 		
-		for(var i = 0; i < res.length; i++) 
+		for(i = 0; i < res.length; i++) 
 		{
 			s += '<button class = "button" id = "' + i  + '" value = "' + res[i] + '" name = "' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button>';
 
-			for(var j = 0; j < 40; j++)
+			for(j = 0; j < 40; j++)
 			{
 				s += '&nbsp;';
 			}
@@ -144,13 +158,13 @@ function selectEngorHin()
 		
 		randomHindi = getRandomHindi();
 		
-		var res = shuffledHindiSentences[randomHindi].split(" ");
+		res = shuffledHindiSentences[randomHindi].split(" ");
 
 		hinSen = HindiSentences[randomHindi];
 
-		for(var i = 0; i < indexSentencesHindi.length; i++)
+		for(i = 0; i < indexSentencesHindi.length; i++)
 		{
-			if(hinSen == indexSentencesHindi[i][0])
+			if(hinSen === indexSentencesHindi[i][0])
 			{
 				indexHindi = i;
 			}
@@ -158,11 +172,11 @@ function selectEngorHin()
 
 		s = "";
 		
-		for(var i = 0; i < res.length; i++) 
+		for(i = 0; i < res.length; i++) 
 		{
 			s += '<button class = "button" id = "' + i  + '" value = "' + res[i] + '" name = "' + res.length + '" onclick = "buttonselected(this.id)">' + res[i] + '</button>';
 
-			for(var j = 0; j < 40; j++)
+			for(j = 0; j < 40; j++)
 			{
 				s += '&nbsp;';
 			}
@@ -235,40 +249,26 @@ function displaychosen(word, id)
 	$('#chosen').html(r);	
 }
 
-function getRandomNumber()
-{
-	var random = Math.floor(Math.random() * shuffledEnglishSentences.length);
-
-	return random;
-};
-
-function getRandomHindi()
-{
-	var random = Math.floor(Math.random() * shuffledHindiSentences.length);
-
-	return random;
-}
-
 Array.prototype.shuffled = function() 
 {
-    var i = this.length;
+    var tr = this.length;
     
-    if (i == 0)
+    if (tr === 0)
     {
     	return this;
     }
 
-    while (--i) 
+    while (--tr) 
     {
-        var j = Math.floor(Math.random() * (i + 1));
+        var j = Math.floor(Math.random() * (tr + 1));
         
-        var a = this[i];
+        var a = this[tr];
         
-        var b = this[j];
+        var b = this[tr];
         
-        this[i] = b;
+        this[tr] = b;
         
-        this[j] = a;
+        this[tr] = a;
     }
 
     return this;
@@ -276,7 +276,7 @@ Array.prototype.shuffled = function()
 
 function shuffleEnglishsentences()
 {
-	for(var i = 0; i < EnglishSentences.length; i++)
+	for(i = 0; i < EnglishSentences.length; i++)
 	{
 		var shuffle = EnglishSentences[i].split(' ').shuffled().join(' ');
 
@@ -288,7 +288,7 @@ function shuffleEnglishsentences()
 
 function shuffleHindisentences()
 {
-	for(var i = 0; i < HindiSentences.length; i++)
+	for(i = 0; i < HindiSentences.length; i++)
 	{
 		var shuffle = HindiSentences[i].split(' ').shuffled().join(' ');
 
@@ -306,7 +306,7 @@ function reformsentence()
 
 	var x = chosenWords.length;
 
-	for(var i = 0; i < x; i++)
+	for(i = 0; i < x; i++)
 	{
 		$('#' + indexId[i]).show();
 	}
@@ -356,7 +356,7 @@ function checkcorrect()
 				flag = 1;
 			}
 
-			for(var i = 0; i < indexSentences[index].length; i++)
+			for(i = 0; i < indexSentences[index].length; i++)
 			{
 				if(chosenSentence[0] == indexSentences[index][i])
 				{
@@ -383,7 +383,7 @@ function checkcorrect()
 
 		else
 		{
-			for(var i = 0; i < chosenSentence.length; i++)
+			for(i = 0; i < chosenSentence.length; i++)
 			{
 				if(chosenSentence[i] == sen)
 				{
@@ -416,7 +416,7 @@ function checkcorrect()
 			else
 			{
 
-				for(var i = 0; i < indexSentencesHindi[indexHindi].length; i++)
+				for(i = 0; i < indexSentencesHindi[indexHindi].length; i++)
 				{
 					if(chosenSentence[0] == indexSentencesHindi[indexHindi][i])
 					{
@@ -441,7 +441,7 @@ function checkcorrect()
 
 		else
 		{
-			for(var i = 0; i < chosenSentence.length; i++)
+			for(i = 0; i < chosenSentence.length; i++)
 			{
 				if(chosenSentence[i] == hinSen)
 				{
