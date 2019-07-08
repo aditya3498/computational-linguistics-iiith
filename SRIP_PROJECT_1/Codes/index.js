@@ -1,4 +1,4 @@
-var x, chosenWords = [], index_sentences = [], index_sentences_hindi = [], Hindi_Sentences = [], shuffledEnglishSentences = [], shuffledHindiSentences = [], count = 0, count_hindi = 0, English_Sentences = [], index, index_hindi, flag = 0, flag_hindi = 0, chosenSentence = [], index_id = [], sen = [], hin_sen = [], r = "", id_1, word, val, random_hindi, truth = true, random;
+var x, chosenWords = [], indexSentences = [], indexSentencesHindi = [], HindiSentences = [], shuffledEnglishSentences = [], shuffledHindiSentences = [], count = 0, countHindi = 0, EnglishSentences = [], index, indexHindi, flag = 0, flagHindi = 0, chosenSentence = [], indexId = [], sen = [], hinSen = [], r = "", id1, word, val, randomhindi, truth = true, random;
 
 $.getJSON("index.json", function(data)
 {
@@ -6,14 +6,14 @@ $.getJSON("index.json", function(data)
 	{
 		if(Array.isArray(data['English'][i]['Sentence']))
 		{
-			index_sentences.push(data['English'][i]['Sentence']);
+			indexSentences.push(data['English'][i]['Sentence']);
 			
-			English_Sentences.push(data['English'][i]['Sentence'][0]);
+			EnglishSentences.push(data['English'][i]['Sentence'][0]);
 		}
 
 		else
 		{
-			English_Sentences.push(data['English'][i]['Sentence']);
+			EnglishSentences.push(data['English'][i]['Sentence']);
 		}
 	}
 });
@@ -24,14 +24,14 @@ $.getJSON("index_hindi.json", function(data)
 	{
 		if(Array.isArray(data['Hindi'][i]['Sentence']))
 		{
-			index_sentences_hindi.push(data['Hindi'][i]['Sentence']);
+			indexSentencesHindi.push(data['Hindi'][i]['Sentence']);
 			
-			Hindi_Sentences.push(data['Hindi'][i]['Sentence'][0]);
+			HindiSentences.push(data['Hindi'][i]['Sentence'][0]);
 		}
 
 		else
 		{
-			Hindi_Sentences.push(data['Hindi'][i]['Sentence']);
+			HindiSentences.push(data['Hindi'][i]['Sentence']);
 		}
 	}
 });
@@ -85,11 +85,11 @@ function selectEngorHin()
 		
 		var res = shuffledEnglishSentences[random].split(" ");
 
-		sen = English_Sentences[random];
+		sen = EnglishSentences[random];
 
-		for(var i = 0; i < index_sentences.length; i++)
+		for(var i = 0; i < indexSentences.length; i++)
 		{
-			if(sen == index_sentences[i][0])
+			if(sen == indexSentences[i][0])
 			{
 				index = i;
 			}
@@ -142,17 +142,17 @@ function selectEngorHin()
 
 		document.getElementById("chosen").style.display = "block";
 		
-		random_hindi = getRandomHindi();
+		randomHindi = getRandomHindi();
 		
-		var res = shuffledHindiSentences[random_hindi].split(" ");
+		var res = shuffledHindiSentences[randomHindi].split(" ");
 
-		hin_sen = Hindi_Sentences[random_hindi];
+		hinSen = HindiSentences[randomHindi];
 
-		for(var i = 0; i < index_sentences_hindi.length; i++)
+		for(var i = 0; i < indexSentencesHindi.length; i++)
 		{
-			if(hin_sen == index_sentences_hindi[i][0])
+			if(hinSen == indexSentencesHindi[i][0])
 			{
-				index_hindi = i;
+				indexHindi = i;
 			}
 		}
 
@@ -206,9 +206,9 @@ function buttonselected(text)
 
 	word = document.getElementById(text).value;
 
-	id_1 = document.getElementById(text).id;
+	id1 = document.getElementById(text).id;
 
-	index_id.push(id_1);	
+	indexId.push(id1);	
 
 	chosenWords.push(word);
 
@@ -221,7 +221,7 @@ function buttonselected(text)
 		document.getElementById("check-correct").style.display = "block";	
 	}
 
-	displaychosen(word, id_1);
+	displaychosen(word, id1);
 };
 
 function displaychosen(word, id)
@@ -276,9 +276,9 @@ Array.prototype.shuffled = function()
 
 function shuffleEnglishsentences()
 {
-	for(var i = 0; i < English_Sentences.length; i++)
+	for(var i = 0; i < EnglishSentences.length; i++)
 	{
-		var shuffle = English_Sentences[i].split(' ').shuffled().join(' ');
+		var shuffle = EnglishSentences[i].split(' ').shuffled().join(' ');
 
 		shuffledEnglishSentences.push(shuffle);
 	}
@@ -288,9 +288,9 @@ function shuffleEnglishsentences()
 
 function shuffleHindisentences()
 {
-	for(var i = 0; i < Hindi_Sentences.length; i++)
+	for(var i = 0; i < HindiSentences.length; i++)
 	{
-		var shuffle = Hindi_Sentences[i].split(' ').shuffled().join(' ');
+		var shuffle = HindiSentences[i].split(' ').shuffled().join(' ');
 
 		shuffledHindiSentences.push(shuffle);
 	}
@@ -308,7 +308,7 @@ function reformsentence()
 
 	for(var i = 0; i < x; i++)
 	{
-		$('#' + index_id[i]).show();
+		$('#' + indexId[i]).show();
 	}
 
 	r = "";
@@ -322,7 +322,7 @@ function reformsentence()
 		chosenSentence = [];
 	}
 
-	index_id = [];
+	indexId = [];
 
 	document.getElementById("re-form").style.display = "none";
 
@@ -349,16 +349,16 @@ function checkcorrect()
 
 		if(index == random)
 		{
-			if(chosenSentence.length == 0 && count == 1)
+			if(chosenSentence.length === 0 && count === 1)
 			{
 				$('#right').show();
 
 				flag = 1;
 			}
 
-			for(var i = 0; i < index_sentences[index].length; i++)
+			for(var i = 0; i < indexSentences[index].length; i++)
 			{
-				if(chosenSentence[0] == index_sentences[index][i])
+				if(chosenSentence[0] == indexSentences[index][i])
 				{
 					$('#right').show();
 
@@ -370,7 +370,7 @@ function checkcorrect()
 				}
 			}
 
-			if(flag == 0)
+			if(flag === 0)
 			{
 				count = 0;
 
@@ -402,35 +402,35 @@ function checkcorrect()
 
 	else
 	{
-		flag_hindi = 0;
+		flagHindi = 0;
 
-		if(index_hindi == random_hindi)
+		if(indexHindi == randomHindi)
 		{
-			if(chosenSentence.length == 0 && count_hindi == 1)
+			if(chosenSentence.length === 0 && countHindi === 1)
 			{
 				$('#right').show();
 
-				flag_hindi = 1;
+				flagHindi = 1;
 			}
 
 			else
 			{
 
-				for(var i = 0; i < index_sentences_hindi[index_hindi].length; i++)
+				for(var i = 0; i < indexSentencesHindi[indexHindi].length; i++)
 				{
-					if(chosenSentence[0] == index_sentences_hindi[index_hindi][i])
+					if(chosenSentence[0] == indexSentencesHindi[indexHindi][i])
 					{
 						$('#right').show();
 
-						flag_hindi = 1;
+						flagHindi = 1;
 
-						count_hindi = 1;
+						countHindi = 1;
 
 						break;
 					}
 				}
 
-				if(flag_hindi == 0)
+				if(flagHindi === 0)
 				{
 					$('#wrong').show();
 
@@ -443,7 +443,7 @@ function checkcorrect()
 		{
 			for(var i = 0; i < chosenSentence.length; i++)
 			{
-				if(chosenSentence[i] == hin_sen)
+				if(chosenSentence[i] == hinSen)
 				{
 					$('#right').show();
 				}

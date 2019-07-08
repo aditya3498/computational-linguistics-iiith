@@ -70,17 +70,17 @@
 		{
 			var label = $(".button1").text().trim();
 
-			if(label == "Get Correct Sentence" && x == "English")
+			if(label === "Get Correct Sentence" && x === "English")
 			{
 				document.getElementById('rightsentence').innerHTML = " ";
 
 				$(".button1").text("Hide The Correct Sentence");
 
-				if(index == random)
+				if(index === random)
 				{
-					for(var i = 0; i < index_sentences[index].length; i++)
+					for(var i = 0; i < indexSentences[index].length; i++)
 					{
-						document.getElementById('rightsentence').innerHTML += index_sentences[index][i] + '<br>'
+						document.getElementById('rightsentence').innerHTML += indexSentences[index][i] + '<br>';
 					}
 
 					$('#rightsentence').show();
@@ -95,26 +95,24 @@
 
 			}
 
-			if(label != "Get Correct Sentence" && x == "English")
+			if(label !== "Get Correct Sentence" && x === "English")
 			{
    				$(".button1").text("Get Correct Sentence");
 
   				$('#rightsentence').hide();
 			}	
 
-			if(label == "Get Correct Sentence" && x == "Hindi")
+			if(label === "Get Correct Sentence" && x === "Hindi")
 			{
-				console.log("HI")
-
 				document.getElementById('rightsentence').innerHTML = " ";
 
 				$(".button1").text("Hide The Correct Sentence");
 
-				if(index_hindi == random_hindi)
+				if(indexHindi === randomHindi)
 				{
-					for(var i = 0; i < index_sentences_hindi[index_hindi].length; i++)
+					for(var i = 0; i < indexSentencesHindi[indexHindi].length; i++)
 					{
-						document.getElementById('rightsentence').innerHTML += index_sentences_hindi[index_hindi][i] + '<br>'
+						document.getElementById('rightsentence').innerHTML += indexSentencesHindi[indexHindi][i] + '<br>';
 					}
 
 					$('#rightsentence').show();
@@ -122,19 +120,16 @@
 
 				else
 				{
-					$('#rightsentence').html(hin_sen);
+					$('#rightsentence').html(hinSen);
 
 					$('#rightsentence').show();
 				}
 
-				//$(".button").attr("disabled", true);
-
 			}
 
-			if(label != "Get Correct Sentence" && x == "Hindi")
+			if(label !== "Get Correct Sentence" && x === "Hindi")
 			{
-				console.log("NO")
-   				$(".button1").text("Get Correct Sentence");
+				$(".button1").text("Get Correct Sentence");
 
   				$('#rightsentence').hide();
 			}
