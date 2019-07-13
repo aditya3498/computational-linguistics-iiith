@@ -1,0 +1,81 @@
+{
+	"Hindi": [{
+			"Sentence": "राम ने सीता के लिए फल तोड़ा |",
+
+			"postags" : "Noun Postposition Noun Postposition Postposition Noun Verb"
+		},
+
+		{
+			"Sentence": "छोटे बच्चे पाठशाला जल्दी आयेंगे |",
+
+			"postags" : "Adjective Noun Noun Adverb Verb"
+		},
+
+		{
+			"Sentence": "मेहनत का फल मीठा होता है |",
+
+			"postags" : "Noun Postposition Noun Adjective Verb Verb"
+		},
+
+		{
+			"Sentence": "वाह वह खूबसूरत है |",
+
+			"postags" : "Interjection Pronoun Adjective Verb"
+		},
+
+		{
+			"Sentence": "पेड़ से पत्ते गिर गए |",
+
+			"postags" : "Noun Postposition Noun Verb Verb"
+		}
+	],
+
+	"POSTAGS": [{
+			"value": "Pronoun",
+
+			"tag": "Pronoun"
+		},
+
+		{
+			"value": "Verb",
+
+			"tag": "Verb"
+		},
+
+		{
+			"value": "Adjective",
+
+			"tag": "Adjective"
+		},
+
+		{
+			"value": "Adverb",
+
+			"tag": "Adverb"
+		},
+
+		{
+			"value": "Postposition",
+
+			"tag": "Postposition"
+		},
+
+		{
+			"value": "Preposition",
+
+			"tag": "Preposition"
+		},
+
+		{
+			"value": "Conjunction",
+
+			"tag": "Conjunction"
+		},
+
+		{
+			"value": "Interjection",
+
+			"tag": "Interjection"
+		}
+	]
+}

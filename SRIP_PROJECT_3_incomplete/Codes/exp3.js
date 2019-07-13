@@ -1,20 +1,26 @@
-var x, corpus = [], corpus_1, corpus_2, corpus_3, tokens, types, res = [], c, words = {};
+var x, corpus = [], stemmer, corpus_1, corpus_2, corpus_3, tokens, types, res = [], c, words = {};
+
+define(['require', 'snowball'], function(require)
+{
+	var Snow = require('snowball')
+
+	stemmer = new Snowball('English');
+	/*stemmer.setCurrent('abbreviations');
+	stemmer.stem();
+	console.log(stemmer.getCurrent());*/
+})
 
 $.getJSON("exp3.json", function(data)
 {
 	for(var i = 0; i < data['Corpus'].length; i++)
 	{
 		corpus.push(data['Corpus'][i]['Corpus'].join(" "));
-
-		//corpus.push("\n\n");
 	}
-
-	//console.log(corpus[1])
 });
 
 function selectCorpus()
 {
-	c = 0, res = [], words = {};
+	c = 0, d = 0, res = [], words = {}, root_word = [], root_similar = {};
 
 	x = document.getElementById("selectedcorpus").value;
 
@@ -43,8 +49,6 @@ function selectCorpus()
 
 		corpus_1 = corpus[0];
 
-		//console.log(corpus_1)
-
 		$('#displaycorpus').html(corpus_1);
 
 		$('#displaycorpus').show();
@@ -55,8 +59,37 @@ function selectCorpus()
 
 		for(var i = 0; i < res.length; i++)
 		{
+			stemmer.setCurrent(res[i]);
+			
+			stemmer.stem()
+			
+			root_word.push(stemmer.getCurrent())
+		}
+
+		console.log(root_word)
+
+		for(var i = 0; i < root_word.length; i++)
+		{
+			if(root_similar[root_word[i]])
+			{
+				//console.log(root_similar)
+				root_similar[root_word[i]]++;
+			}
+
+			else
+			{
+				console.log(root_similar)
+				d++;
+
+				root_similar[root_word[i]] = 1;
+			}
+		}
+
+		for(var i = 0; i < res.length; i++)
+		{
 			if(words[res[i]])
 			{
+				console.log(words)
 				words[res[i]]++;
 			}
 
@@ -69,6 +102,8 @@ function selectCorpus()
 		}
 
 		console.log(c)
+
+		console.log(d)
 
 		$('#demo1').show();
 
@@ -107,8 +142,6 @@ function selectCorpus()
 		document.getElementById("buttons").style.display = "none";
 
 		document.getElementById("table").style.display = "none";
-
-		//console.log(pol)
 
 		corpus_1 = corpus[1];
 
@@ -215,8 +248,6 @@ function check()
 	var mytable = document.getElementById('table');
 
 	var inputs = mytable.getElementsByTagName('input')
-
-	//console.log(c)
 
 	if(inputs[0].value != " " && inputs[1].value != " ")
 	{

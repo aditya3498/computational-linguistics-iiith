@@ -6,6 +6,16 @@ select{
   text-align: center;
 }
 
+img{
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  width: 100%;
+}
+
 #pageheader{
   margin-top: 30px;
 
@@ -31,14 +41,6 @@ p
   font-size: 35px;
 }
 
-#right{
-  color: green;
-}
-
-#wrong{
-  color: red;
-}
-
 .button, .button1{
 
   font-size: 24px;
@@ -60,13 +62,4 @@ p
   margin: 4px 2px;
   
   cursor: pointer;
-}
-
-#reform
-{
-  margin: auto;
-
-  display: block;
-
-  font-size: 24px;
 }

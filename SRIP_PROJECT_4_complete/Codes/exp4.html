@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title> Computational Linguistics Lab </title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content = "width=device-width, initial-scale = 1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+
+  <link rel = "stylesheet" href = "styles.css">
+
+  <script type = "text/javascript" src = "exp4.js"> </script>
+  
+</head>
+
+<body>
+
+	<h1 id = "pageheader" align="center"><b> Heap's Law </b></h1>
+
+	<h2><b> Experiment 4 </b></h2>
+
+	<br>
+
+	<div class="row">
+ 	 
+ 		<div class="col-md-12 school-options-dropdown text-center">
+  	
+  	  		<select id = "selectedlanguage" autocomplete="off" onchange="selectLanguage()">  
+	
+				<option value = "" selected > ---Select a Language--- </option>
+		
+				<option value = "English" > English </option>
+		
+			</select>
+  	 
+  	 	</div>
+	
+	</div>
+
+	<br></br>
+
+	<div class="row">
+ 	 
+ 	 	<div class="col-md-12 school-options-dropdown text-center">
+  	
+  	  		<select id = "selectedcorpus" autocomplete="off" onchange="displaycorpussize()" hidden>  
+	
+				<option value = "" selected > ---Select Corpus Size--- </option>
+		
+				<option value = "100000" > 100000 </option>
+		
+				<option value = "500000"> 500000 </option>
+
+				<option value = "1000000"> 1000000 </option>
+		
+			</select>
+  	 
+  		</div>
+
+  	</div><br></br>
+
+  	<div class = "wrapper" id="generate" hidden><button class = "button" id="generategraph" onclick="generate()">Generate Tokens vs. Types Graph</button></div><br></br> 
+
+  	<table id = "table" align="center">
+  		<tr>
+  			<td id = "img"></td>
+  		</tr>
+  	</table>
+
+  </body>
+
+</html>

@@ -99,6 +99,8 @@ function selectEngorHin()
 		
 		res = shuffledEnglishSentences[random].split(" ");
 
+		console.log(res)
+
 		sen = EnglishSentences[random];
 
 		for(i = 0; i < indexSentences.length; i++)
@@ -264,11 +266,9 @@ Array.prototype.shuffled = function()
         
         var a = this[tr];
         
-        var b = this[tr];
+        this[tr] = this[j];
         
-        this[tr] = b;
-        
-        this[tr] = a;
+        this[j] = a;
     }
 
     return this;
@@ -279,6 +279,8 @@ function shuffleEnglishsentences()
 	for(i = 0; i < EnglishSentences.length; i++)
 	{
 		var shuffle = EnglishSentences[i].split(' ').shuffled().join(' ');
+
+		console.log(shuffle)
 
 		shuffledEnglishSentences.push(shuffle);
 	}
