@@ -15,6 +15,11 @@ function selectLanguage()
 
 	if(x === "English")
 	{
+		if(y !== "")
+		{
+			document.getElementById('selectedcorpus').innerHTML += " ";
+		}
+
 		displaycorpussize();
 	}
 
@@ -23,6 +28,10 @@ function selectLanguage()
 		alert("Please Select a Language");
 
 		$("#selectedcorpus").hide();
+
+		$("#generate").hide();
+
+		$("#img").hide();
 	}
 }
 

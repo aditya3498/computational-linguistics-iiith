@@ -177,6 +177,23 @@ function selectLanguage()
 		$("#EngorHinSen").show();
 	}
 
+	else
+	{
+		alert("Please choose a valid Language");
+
+		document.getElementById('EngorHinSen').style.display = "none";
+
+		document.getElementById('possen').style.display = "none";
+
+		document.getElementById('table').style.display = "none";
+
+		document.getElementById('postag').style.display = "none";
+
+		document.getElementById('submit').style.display = "none";
+
+		document.getElementById('getanswers').style.display = "none";
+	}
+
 	document.getElementById('postag').style.display = "none"
 }
 
