@@ -15,11 +15,6 @@ function selectLanguage()
 
 	if(x === "English")
 	{
-		if(y !== "")
-		{
-			document.getElementById('selectedcorpus').innerHTML += " ";
-		}
-
 		displaycorpussize();
 	}
 

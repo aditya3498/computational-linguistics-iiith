@@ -40,11 +40,11 @@ table{
    font-size: 22px;
 }
 
-#right{
+#right, #right_new{
   color: green;
 }
 
-#wrong{
+#wrong, #wrong_new{
   color: red;
 }
 

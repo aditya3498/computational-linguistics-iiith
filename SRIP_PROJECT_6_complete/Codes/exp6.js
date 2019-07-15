@@ -31,10 +31,6 @@ $.getJSON("expHindi.json", function(data)
 	{
 		HindiTags.push(data["POSTAGS"][i]);
 	}
-
-	//console.log(HindiSentences)
-
-	//console.log(HindiTags)
 });
 
 function addoptionsEnglish()
@@ -69,34 +65,34 @@ function displayOptionsEnglish()
 	}
 }
 
-function filltableEnglish(value)
-{
-	pos = document.getElementById("postag");
-
-	pos.options.length = 1;
-
-	displayOptionsEnglish();
-
-	var chosen = EnglishSentences[value];
-
-	split = chosen.split(" ")
-
-	//var dropdown = document.getElementById('postag');
-
-	//$("#postag").show();
-
-	for(var i = 0; i < split.length; i++)
+	function filltableEnglish(value)
 	{
-		//const z = i;
-		$('#postag').show();
-		
-		$('#table').append('<tr id = "' + i + '"><td>' + split[i] + '</td>' + '<td id = "' + i + '">' + pos.outerHTML + '</td></tr>');
+		pos = document.getElementById("postag");
+
+		pos.options.length = 1;
+
+		displayOptionsEnglish();
+
+		var chosen = EnglishSentences[value];
+
+		split = chosen.split(" ")
+
+		//var dropdown = document.getElementById('postag');
+
+		//$("#postag").show();
+
+		for(var i = 0; i < split.length; i++)
+		{
+			//const z = i;
+			$('#postag').show();
+			
+			$('#table').append('<tr id = "' + i + '"><td>' + split[i] + '</td>' + '<td id = "' + i + '">' + pos.outerHTML + '</td></tr>');
+		}
+
+		$("#table").show();
+
+		$("#submit").show();
 	}
-
-	$("#table").show();
-
-	$("#submit").show();
-}
 
 function filltableHindi(value)
 {

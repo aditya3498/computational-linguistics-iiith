@@ -5,10 +5,7 @@ define(['require', 'snowball'], function(require)
 	var Snow = require('snowball')
 
 	stemmer = new Snowball('English');
-	/*stemmer.setCurrent('abbreviations');
-	stemmer.stem();
-	console.log(stemmer.getCurrent());*/
-})
+});
 
 $.getJSON("exp3.json", function(data)
 {
@@ -32,20 +29,20 @@ function selectCorpus()
 
 		$('#new').hide();
 
-		document.getElementById('tokens').style.background = "white"
+		document.getElementById('tokens').style.background = "white";
 
-		document.getElementById('types').style.background = "white"
+		document.getElementById('types').style.background = "white";
 
 		var mytable = document.getElementById('table');
 
-		var inputs = mytable.getElementsByTagName('input')
+		var inputs = mytable.getElementsByTagName('input');
 
 		for(var i = 0; i < inputs.length; i++)
 		{
 			inputs[i].value = " ";
 		}
 
-		console.log(corpus[0])
+		//console.log(corpus[0])
 
 		corpus_1 = corpus[0];
 
@@ -55,7 +52,7 @@ function selectCorpus()
 
 		res = corpus_1.replace(/[^a-zA-Z ]/g, "").toLowerCase().split(" ");
 
-		console.log(res)
+		//console.log(res)
 
 		for(var i = 0; i < res.length; i++)
 		{
@@ -66,7 +63,7 @@ function selectCorpus()
 			root_word.push(stemmer.getCurrent())
 		}
 
-		console.log(root_word)
+		//console.log(root_word)
 
 		for(var i = 0; i < root_word.length; i++)
 		{
@@ -78,7 +75,7 @@ function selectCorpus()
 
 			else
 			{
-				console.log(root_similar)
+				//console.log(root_similar)
 				d++;
 
 				root_similar[root_word[i]] = 1;
@@ -89,7 +86,7 @@ function selectCorpus()
 		{
 			if(words[res[i]])
 			{
-				console.log(words)
+				//console.log(words)
 				words[res[i]]++;
 			}
 
@@ -100,10 +97,6 @@ function selectCorpus()
 				words[res[i]] = 1;
 			}
 		}
-
-		console.log(c)
-
-		console.log(d)
 
 		$('#demo1').show();
 
@@ -151,7 +144,7 @@ function selectCorpus()
 
 		res = corpus_1.replace(/[^a-zA-Z ]/g, "").toLowerCase().split(" ");
 
-		console.log(res)
+		//console.log(res)
 
 		for(var i = 0; i < res.length; i++)
 		{
@@ -167,8 +160,6 @@ function selectCorpus()
 				words[res[i]] = 1;
 			}
 		}
-
-		console.log(c)
 
 		$('#demo1').show();
 
@@ -216,7 +207,7 @@ function selectCorpus()
 
 		res = corpus_1.replace(/[^a-zA-Z ]/g, "").toLowerCase().split(" ");
 
-		console.log(res)
+		//console.log(res)
 
 		for(var i = 0; i < res.length; i++)
 		{
@@ -232,8 +223,6 @@ function selectCorpus()
 				words[res[i]] = 1;
 			}
 		}
-
-		console.log(c)
 
 		$('#demo1').show();
 
@@ -301,6 +290,31 @@ function check()
 	else
 	{
 		alert("Please Enter Both Values");
+	}
+}
+
+function check_new()
+{
+	var mytable = document.getElementById('table_new');
+
+	var inputs = mytable.getElementsByTagName('input');
+
+	if(inputs[0].value != " ")
+	{
+		if(inputs[0].value == d)
+		{
+			$("#right_new").show();
+		}
+
+		else
+		{
+			$("#wrong_new").show();
+		}
+	}
+
+	else
+	{
+		alert("Please Enter the Value");
 	}
 }
 
